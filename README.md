@@ -1,4 +1,4 @@
-# Adeept DarkPaw-Metal Quadruped Robot Kit for RPi
+# Adeept DarkPaw-Metal Quadruped Robot for RPi
 Adeept DarkPaw-Metal Quadruped Robot is an open source intelligent robotics product for artificial intelligence, robotics enthusiasts and students. This product is based on the Raspberry Pi motherboard using the python language and is compatible with the following Raspberry Pi models: 3B,3B+,4,5, etc.
 
 
