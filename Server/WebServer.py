@@ -56,10 +56,6 @@ def servoPosInit():
     SpiderG.move_init()
 
 
-def ap_thread():
-    os.system("sudo create_ap wlan0 eth0 AdeeptRobot 12345678")
-
-
 def functionSelect(command_input, response):
     global functionMode, SteadyMode
     
@@ -367,24 +363,6 @@ def configPWM(command_input, response):
         SpiderG.move_init()
 
 
-def wifi_check():
-    try:
-        s =socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-        s.connect(("1.1.1.1",80))
-        ipaddr_check=s.getsockname()[0]
-        s.close()
-        print(ipaddr_check)
-
-    except:
-        ws2812.pause()
-        ws2812.set_all_led_color_data(0,255,64)
-        ws2812.show()
-        ap_threading=threading.Thread(target=ap_thread)   #Define a thread for data receiving
-        ap_threading.setDaemon(True)                          #'True' means it is a front thread,it would close when the mainloop() closes
-        ap_threading.start()                                  #Thread starts
-
-
-
 async def check_permit(websocket):
     while True:
         recv_str = await websocket.recv()
@@ -463,7 +441,6 @@ if __name__ == '__main__':
         pass
 
     while  1:
-        wifi_check()
         try:                  #Start server,waiting for client
             start_server = websockets.serve(main_logic, '0.0.0.0', 8888)
             asyncio.get_event_loop().run_until_complete(start_server)
